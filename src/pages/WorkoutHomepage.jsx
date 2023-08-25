@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import NavBar from "../components/Navbar";
-
+import myApi from "../api/service";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function Workoutpage() {
   const [workout, setWorkouts] = useState([]);
 
   const getAllWorkouts = () => {
-    axios
+    myApi
       .get(`${API_URL}/api/workouts`)
       .then((response) => {
         setWorkouts(response.data);
