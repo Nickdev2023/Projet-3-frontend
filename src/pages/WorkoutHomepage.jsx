@@ -3,10 +3,16 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import NavBar from "../components/Navbar";
 import myApi from "../api/service";
+import WorkoutCreateForm from "../components/WorkoutCreateForm";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function Workoutpage() {
   const [workout, setWorkouts] = useState([]);
+  const [showResults, setShowResults] = useState(false);
+
+  function toggle() {
+    setShowResults((showResults) => !showResults);
+  }
 
   const getAllWorkouts = () => {
     myApi
@@ -24,6 +30,13 @@ function Workoutpage() {
   return (
     <div>
       <NavBar />
+      <div>
+        <button type="submit" value="Create Workout" onClick={toggle}>
+          Create Workout 🖊️
+        </button>
+        {showResults && <WorkoutCreateForm />}
+      </div>
+
       <p>Workouts Page</p>
       {workout.map((workout) => {
         return (
