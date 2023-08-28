@@ -3,11 +3,18 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import NavBar from "../components/Navbar";
 import myApi from "../api/service";
+import ExerciseCreateForm from "../components/ExerciseCreateForm";
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 function SingleWorkout() {
   let params = useParams();
   let workoutId = params.workoutId;
+  const [showResults, setShowResults] = useState(false);
+
+  function toggle() {
+    setShowResults((showResults) => !showResults);
+  }
 
   const [workout, setWorkout] = useState({});
 
@@ -15,6 +22,7 @@ function SingleWorkout() {
     myApi
       .get(`${API_URL}/api/workouts/${workoutId}`)
       .then((response) => {
+        console.log(response.data);
         setWorkout(response.data);
       })
       .catch((error) => console.log(error));
@@ -30,9 +38,16 @@ function SingleWorkout() {
   return (
     <div>
       <NavBar />
-      <p>Single workout page {workout.name}</p>
+      <p>Single workout page</p>
+      {/* <ExerciseCreateForm /> */}
 
-      {workout.exercices.map((exercise) => {
+      <div>
+        <button type="submit" value="Create Exercice" onClick={toggle}>
+          Create exercice
+        </button>
+        {showResults && <ExerciseCreateForm />}
+      </div>
+      {/* {workout.exercice.map((exercise) => {
         console.log("exercises:", exercise, workoutId);
         return (
           <div key={exercise._id}>
@@ -42,7 +57,7 @@ function SingleWorkout() {
             <p>{exercise.weight} kg</p>
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 }

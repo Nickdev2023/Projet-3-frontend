@@ -14,11 +14,13 @@ const DEFAULT_EXERCISE_FORM_VALUES = {
   category: "-1",
 };
 
-function CreateExercise() {
+function ExerciseCreateForm() {
   const [exercise, setExercise] = useState({ ...DEFAULT_EXERCISE_FORM_VALUES });
   const [submitting, setSubmitting] = useState(false);
   let params = useParams();
   let workoutId = params.workoutId;
+  //   const [showResults, setShowResults] = useState(false);
+  //   const onClick = () => setShowResults(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -133,10 +135,11 @@ function CreateExercise() {
           <button type="submit" disabled={submitting}>
             Save
           </button>
+          {/* {!showResults ? <ExerciseCreateForm /> : null} */}
         </div>
       </form>
     </div>
   );
 }
 
-export default CreateExercise;
+export default ExerciseCreateForm;
