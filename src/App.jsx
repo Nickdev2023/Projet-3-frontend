@@ -10,20 +10,24 @@ import SingleWorkout from "./pages/SingleWorkout";
 import CreateWorkout from "./pages/CreateWorkout";
 import CreateExercise from "./pages/CreateExercise";
 import SignupPage from "./pages/SignInPage";
+import Exercisepage from "./pages/SingleExercisePage";
+import Singlepage from "./pages/ExerciceHomePage";
 
 function App() {
   return (
     <div>
       <Routes>
         <Route element={<NavBar />} />
-        <Route exact path="/" element={<LoginPage />} />
-        <Route exact path="/home" element={<HomePage />} />
-        <Route exact path="/user" element={<Userpage />} />
-        <Route exact path="/workouts" element={<Workoutpage />} />
-        <Route exact path="/signup" element={<SignupPage />} />
-        <Route exact path="/workouts/:workoutId" element={<SingleWorkout />} />
-        <Route exact path="/createWorkout" element={<CreateWorkout />} />
-        <Route exact path="/createExercise" element={<CreateExercise />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/user" element={<Userpage />} />
+        <Route path="/workouts" element={<Workoutpage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/workouts/:workoutId" element={<SingleWorkout />} />
+        <Route path="/createWorkout" element={<CreateWorkout />} />
+        <Route path="/createExercise" element={<CreateExercise />} />
+        <Route path="/exercices" element={<Singlepage />} />
+        <Route path="/exercices/:exerciceId" element={<Exercisepage />} />
       </Routes>
     </div>
   );

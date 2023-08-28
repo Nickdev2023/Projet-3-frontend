@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import NavBar from "../components/Navbar";
 import myApi from "../api/service";
@@ -34,7 +33,7 @@ function Workoutpage() {
         <button type="submit" value="Create Workout" onClick={toggle}>
           Create Workout 🖊️
         </button>
-        {showResults && <WorkoutCreateForm />}
+        {showResults && <WorkoutCreateForm getAllWorkouts={getAllWorkouts} />}
       </div>
 
       <p>Workouts Page</p>

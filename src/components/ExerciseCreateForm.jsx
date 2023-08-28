@@ -14,7 +14,7 @@ const DEFAULT_EXERCISE_FORM_VALUES = {
   category: "-1",
 };
 
-function ExerciseCreateForm() {
+function ExerciseCreateForm({ getAllExercises }) {
   const [exercise, setExercise] = useState({ ...DEFAULT_EXERCISE_FORM_VALUES });
   const [submitting, setSubmitting] = useState(false);
   let params = useParams();
@@ -35,9 +35,11 @@ function ExerciseCreateForm() {
         // Reset the state to clear the inputs
         setExercise({ ...DEFAULT_EXERCISE_FORM_VALUES });
         setSubmitting(false);
+        getAllExercises();
       })
       .catch((error) => console.log(error));
   };
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
