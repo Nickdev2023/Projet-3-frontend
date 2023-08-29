@@ -5,13 +5,14 @@ import myApi from "../api/service";
 import ExerciseCreateForm from "../components/ExerciseCreateForm";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import WorkoutEditForm from "../components/WorkoutEditForm";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function SingleWorkout() {
   let params = useParams();
   let workoutId = params.workoutId;
   const [showResults, setShowResults] = useState(false);
+
   const navigate = useNavigate();
   const [workout, setWorkout] = useState({});
 
@@ -39,12 +40,12 @@ function SingleWorkout() {
       .then(() => navigate(`/workouts`))
       .catch((error) => console.log(error));
   };
-  const handleDeleteExercise = () => {
-    myApi
-      .delete(`${API_URL}/api/exercices/${exerciceId}`)
-      .then(() => navigate(`/workouts`))
-      .catch((error) => console.log(error));
-  };
+  // const handleDeleteExercise = () => {
+  //   myApi
+  //     .delete(`${API_URL}/api/exercices/${exerciceId}`)
+  //     .then(() => navigate(`/workouts`))
+  //     .catch((error) => console.log(error));
+  // };
   if (!Object.keys(workout).length)
     return <div className="loading">Loading</div>;
 
@@ -66,6 +67,13 @@ function SingleWorkout() {
           <ExerciseCreateForm getAllExercises={getAllExercises} />
         )}
       </div>
+      <div>
+        <button type="submit" value="Create Exercice" onClick={toggle}>
+          Edit Workout 🖊️
+        </button>
+        {showResults && <WorkoutEditForm getAllExercises={getAllExercises} />}
+      </div>
+
       {workout.exos.map((exercise) => {
         console.log("exercises:", exercise, workoutId);
         return (
@@ -74,8 +82,9 @@ function SingleWorkout() {
               <h1>{exercise.exerciceName}</h1>
             </Link>
 
-            <h2>{exercise.sets}</h2>
-            <p>{exercise.weight} kg</p>
+            <h2>Sets: {exercise.sets}</h2>
+            <p>Weight: {exercise.weight} kg</p>
+            <p>🟢 🟠 🔴</p>
           </div>
         );
       })}

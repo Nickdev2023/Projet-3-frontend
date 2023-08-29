@@ -4,6 +4,8 @@ import NavBar from "../components/Navbar";
 import myApi from "../api/service";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import ExerciseEditForm from "../components/ExerciseEditForm";
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 function Exercisepage() {
@@ -36,6 +38,7 @@ function Exercisepage() {
   return (
     <div>
       <NavBar />
+      <ExerciseEditForm />
       <p>Exercise Page</p>
       <div>
         <h1>{exercise.exerciceName}</h1>
@@ -45,7 +48,7 @@ function Exercisepage() {
         <p>weight:{exercise.weight}</p>
         <div>
           <button type="submit" onClick={handleDeleteExercise}>
-            Delete the workout
+            Delete the exercice
           </button>
         </div>
       </div>

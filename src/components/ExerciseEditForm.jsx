@@ -13,28 +13,40 @@ const DEFAULT_EXERCISE_FORM_VALUES = {
   category: "-1",
 };
 
-function ExerciseCreateForm({ getAllExercises }) {
+function ExerciseEditForm() {
   const [exercise, setExercise] = useState({ ...DEFAULT_EXERCISE_FORM_VALUES });
   const [submitting, setSubmitting] = useState(false);
   let params = useParams();
-  let workoutId = params.workoutId;
-  //   const [showResults, setShowResults] = useState(false);
-  //   const onClick = () => setShowResults(true);
+  let exerciceId = params.exerciceId;
 
+  //   console.log(exerciceId);
   const handleSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { ...exercise, workout: workoutId };
+    const requestBody = { ...exercise, exercice: exerciceId };
 
     setSubmitting(true);
 
+    // const getExercise = () => {
+    //   myApi
+    //     .get(`${API_URL}/api/exercices/${exerciceId}`)
+    //     .then((response) => {
+    //       console.log(response);
+    //       setExercise(response.data);
+    //     })
+    //     .catch((error) => console.log(error));
+    // };
+    // useEffect(() => {
+    //   getExercise();
+    // }, []);
+
     myApi
-      .post(`${API_URL}/api/exercices`, requestBody)
+      .put(`${API_URL}/api/exercices/${exerciceId}`, requestBody)
       .then(() => {
         console.log(requestBody);
         // Reset the state to clear the inputs
         setExercise({ ...DEFAULT_EXERCISE_FORM_VALUES });
         setSubmitting(false);
-        getAllExercises();
+        // getExercise();
       })
       .catch((error) => console.log(error));
   };
@@ -53,7 +65,7 @@ function ExerciseCreateForm({ getAllExercises }) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h3>Add Exercise</h3>
+        <h3>Edit an Exercise</h3>
         <div>
           <label>Exercice Name:</label>
           <input
@@ -143,4 +155,4 @@ function ExerciseCreateForm({ getAllExercises }) {
   );
 }
 
-export default ExerciseCreateForm;
+export default ExerciseEditForm;

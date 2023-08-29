@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import NavBar from "../components/Navbar";
 import myApi from "../api/service";
 import WorkoutCreateForm from "../components/WorkoutCreateForm";
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 function Workoutpage() {

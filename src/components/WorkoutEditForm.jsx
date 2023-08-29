@@ -1,50 +1,46 @@
 import { useState, useEffect } from "react";
-import myApi from "../api/service";
 import { useParams } from "react-router-dom";
+import myApi from "../api/service";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const DEFAULT_EXERCISE_FORM_VALUES = {
-  exerciceName: "",
-  sets: "",
-  repetition: "",
-  weight: "",
-  exerciceType: "-1",
+const DEFAULT_WORKOUT_FORM_VALUES = {
+  workoutName: "",
+  duration: "",
+  day: "-1",
   category: "-1",
 };
 
-function ExerciseCreateForm({ getAllExercises }) {
-  const [exercise, setExercise] = useState({ ...DEFAULT_EXERCISE_FORM_VALUES });
+function WorkoutEditForm({ getAllWorkouts }) {
+  const [workout, setWorkout] = useState({ ...DEFAULT_WORKOUT_FORM_VALUES });
   const [submitting, setSubmitting] = useState(false);
+
   let params = useParams();
   let workoutId = params.workoutId;
-  //   const [showResults, setShowResults] = useState(false);
-  //   const onClick = () => setShowResults(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { ...exercise, workout: workoutId };
+    const requestBody = { ...workout, workout: workoutId };
 
     setSubmitting(true);
 
     myApi
-      .post(`${API_URL}/api/exercices`, requestBody)
+      .put(`${API_URL}/api/workouts/${workoutId}`, requestBody)
       .then(() => {
         console.log(requestBody);
         // Reset the state to clear the inputs
-        setExercise({ ...DEFAULT_EXERCISE_FORM_VALUES });
+        setWorkout({ ...DEFAULT_WORKOUT_FORM_VALUES });
         setSubmitting(false);
-        getAllExercises();
+        getAllWorkouts();
       })
       .catch((error) => console.log(error));
   };
-
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
     let inputValue = type === "checkbox" ? checked : value;
 
-    setExercise((prevStudent) => ({
+    setWorkout((prevStudent) => ({
       ...prevStudent,
       [name]: inputValue,
     }));
@@ -53,76 +49,60 @@ function ExerciseCreateForm({ getAllExercises }) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h3>Add Exercise</h3>
+        <h3>Edit Workout</h3>
         <div>
-          <label>Exercice Name:</label>
+          <label>Workout Name:</label>
           <input
             type="text"
-            name="exerciceName"
-            value={exercise.exerciceName}
+            name="workoutName"
+            value={workout.workoutName}
             onChange={handleChange}
             disabled={submitting}
           />
         </div>
 
         <div>
-          <label>Sets:</label>
+          <label>Duration:</label>
           <input
             type="text"
-            name="sets"
-            value={exercise.sets}
+            name="duration"
+            value={workout.duration}
             onChange={handleChange}
             disabled={submitting}
           />
         </div>
 
         <div>
-          <label>Repetition:</label>
-          <input
-            type="text"
-            name="repetition"
-            value={exercise.repetition}
-            onChange={handleChange}
-            disabled={submitting}
-          />
-        </div>
-        <div>
-          <label>Weight:</label>
-          <input
-            type="text"
-            name="weight"
-            value={exercise.weight}
-            onChange={handleChange}
-            disabled={submitting}
-          />
-        </div>
-
-        <div>
-          <label>Exercise Type:</label>
+          <label>When do you want to train ? </label>
           <select
-            name="exerciceType"
-            value={exercise.exerciceType}
+            name="day"
+            value={workout.day}
             onChange={handleChange}
             disabled={submitting}
           >
             <option disabled value="-1">
-              Please select something
+              Please select a day
             </option>
-            <option value="Polyarticular">Polyarticular</option>
-            <option value="Monoarticular">Monoarticular</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
           </select>
         </div>
 
         <div>
-          <label>Category:</label>
+          <label>Muscle group:</label>
           <select
             name="category"
-            value={exercise.category}
+            value={workout.category}
             onChange={handleChange}
             disabled={submitting}
           >
             <option disabled value="-1">
-              Please select something
+              Please select a group
             </option>
             <option value="Chest">Chest</option>
             <option value="Shoulders">Shoulders</option>
@@ -143,4 +123,4 @@ function ExerciseCreateForm({ getAllExercises }) {
   );
 }
 
-export default ExerciseCreateForm;
+export default WorkoutEditForm;
