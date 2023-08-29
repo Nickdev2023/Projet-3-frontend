@@ -11,7 +11,7 @@ const DEFAULT_WORKOUT_FORM_VALUES = {
   category: "-1",
 };
 
-function WorkoutEditForm({ getAllWorkouts }) {
+function WorkoutEditForm() {
   const [workout, setWorkout] = useState({ ...DEFAULT_WORKOUT_FORM_VALUES });
   const [submitting, setSubmitting] = useState(false);
 
@@ -29,9 +29,11 @@ function WorkoutEditForm({ getAllWorkouts }) {
       .then(() => {
         console.log(requestBody);
         // Reset the state to clear the inputs
-        setWorkout({ ...DEFAULT_WORKOUT_FORM_VALUES });
+        // setWorkout({
+        //   ...DEFAULT_WORKOUT_FORM_VALUES,
+        // });
         setSubmitting(false);
-        getAllWorkouts();
+        // getAllWorkouts();
       })
       .catch((error) => console.log(error));
   };

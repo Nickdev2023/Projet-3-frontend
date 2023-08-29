@@ -12,12 +12,17 @@ function SingleWorkout() {
   let params = useParams();
   let workoutId = params.workoutId;
   const [showResults, setShowResults] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
 
   const navigate = useNavigate();
   const [workout, setWorkout] = useState({});
 
-  function toggle() {
-    setShowResults((showResults) => !showResults);
+  function toggle(e) {
+    if (e.target.value === "Create Exercice") {
+      setShowResults((showResults) => !showResults);
+    } else if (e.target.value === "Edit Exercice") {
+      setShowEdit((showEdit) => !showEdit);
+    }
   }
 
   const getAllExercises = () => {
@@ -68,10 +73,10 @@ function SingleWorkout() {
         )}
       </div>
       <div>
-        <button type="submit" value="Create Exercice" onClick={toggle}>
+        <button type="submit" value="Edit Exercice" onClick={toggle}>
           Edit Workout 🖊️
         </button>
-        {showResults && <WorkoutEditForm getAllExercises={getAllExercises} />}
+        {showEdit && <WorkoutEditForm getAllExercises={getAllExercises} />}
       </div>
 
       {workout.exos.map((exercise) => {

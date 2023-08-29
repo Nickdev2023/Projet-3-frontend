@@ -20,33 +20,31 @@ function ExerciseEditForm() {
   let exerciceId = params.exerciceId;
 
   //   console.log(exerciceId);
+  useEffect(() => {
+    getExercise();
+  }, []);
+
+  const getExercise = () => {
+    myApi
+      .get(`${API_URL}/api/exercices/${exerciceId}`)
+      .then((response) => {
+        console.log(response);
+        setExercise(response.data);
+      })
+      .catch((error) => console.log(error));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const requestBody = { ...exercise, exercice: exerciceId };
 
     setSubmitting(true);
 
-    // const getExercise = () => {
-    //   myApi
-    //     .get(`${API_URL}/api/exercices/${exerciceId}`)
-    //     .then((response) => {
-    //       console.log(response);
-    //       setExercise(response.data);
-    //     })
-    //     .catch((error) => console.log(error));
-    // };
-    // useEffect(() => {
-    //   getExercise();
-    // }, []);
-
     myApi
       .put(`${API_URL}/api/exercices/${exerciceId}`, requestBody)
       .then(() => {
-        console.log(requestBody);
         // Reset the state to clear the inputs
-        setExercise({ ...DEFAULT_EXERCISE_FORM_VALUES });
         setSubmitting(false);
-        // getExercise();
       })
       .catch((error) => console.log(error));
   };

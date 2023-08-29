@@ -15,9 +15,6 @@ function WorkoutCreateForm({ getAllWorkouts }) {
   const [workout, setWorkout] = useState({ ...DEFAULT_WORKOUT_FORM_VALUES });
   const [submitting, setSubmitting] = useState(false);
 
-  //   const [showResults, setShowResults] = useState(false);
-  //   const onClick = () => setShowResults(true);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const requestBody = { ...workout };

@@ -26,7 +26,8 @@ function Exercisepage() {
 
   useEffect(() => {
     getExercise();
-  }, []);
+  }, [exercise]);
+
   const handleDeleteExercise = () => {
     let exerciceId = params.exerciceId;
     myApi
