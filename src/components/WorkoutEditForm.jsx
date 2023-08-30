@@ -18,6 +18,20 @@ function WorkoutEditForm() {
   let params = useParams();
   let workoutId = params.workoutId;
 
+  // useEffect(() => {
+  //   getWorkout();
+  // }, []);
+
+  // const getWorkout = () => {
+  //   myApi
+  //     .get(`${API_URL}/api/workouts/${workoutId}`)
+  //     .then((response) => {
+  //       console.log(response.data);
+  //       setWorkout(response.data);
+  //     })
+  //     .catch((error) => console.log(error));
+  // };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const requestBody = { ...workout, workout: workoutId };
