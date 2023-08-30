@@ -13,6 +13,7 @@ function SingleWorkout() {
   let workoutId = params.workoutId;
   const [showResults, setShowResults] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
+  const [count, setCount] = useState(0);
 
   const navigate = useNavigate();
   const [workout, setWorkout] = useState({});
@@ -41,9 +42,27 @@ function SingleWorkout() {
 
   const handleDelete = () => {
     myApi
-      .delete(`${API_URL}/api/workouts/${workoutId}`)
+      .delete(`/api/workouts/${workoutId}`)
       .then(() => navigate(`/workouts`))
       .catch((error) => console.log(error));
+  };
+
+  const increaseWorkout = (exercise) => {
+    // console.log(exercise.counter);
+    // setCount(() => exercise.counter + 1);
+    // if (exercise.counter === 3) {
+    //   setCountexercise.counter = 0;
+    //   exercise.weight += 5;
+    // }
+    myApi
+      .put(`/api/exercices/${exercise._id}/increment`)
+      .then((response) => {
+        console.log(response);
+        getAllExercises();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   };
   // const handleDeleteExercise = () => {
   //   myApi
@@ -90,6 +109,12 @@ function SingleWorkout() {
             <h2>Sets: {exercise.sets}</h2>
             <p>Weight: {exercise.weight} kg</p>
             <p>🟢 🟠 🔴</p>
+            <div>
+              <p>You have done this exercise {exercise.counter} times</p>
+              <button onClick={() => increaseWorkout(exercise)}>
+                Exercise Done !
+              </button>
+            </div>
           </div>
         );
       })}
