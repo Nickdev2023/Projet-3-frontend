@@ -9,14 +9,13 @@ import WorkoutEditForm from "../components/WorkoutEditForm";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function SingleWorkout() {
+  const [workout, setWorkout] = useState("");
   let params = useParams();
   let workoutId = params.workoutId;
   const [showResults, setShowResults] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
-  const [count, setCount] = useState(0);
 
   const navigate = useNavigate();
-  const [workout, setWorkout] = useState({});
 
   function toggle(e) {
     if (e.target.value === "Create Exercice") {
@@ -48,12 +47,6 @@ function SingleWorkout() {
   };
 
   const increaseWorkout = (exercise) => {
-    // console.log(exercise.counter);
-    // setCount(() => exercise.counter + 1);
-    // if (exercise.counter === 3) {
-    //   setCountexercise.counter = 0;
-    //   exercise.weight += 5;
-    // }
     myApi
       .put(`/api/exercices/${exercise._id}/increment`)
       .then((response) => {
@@ -64,19 +57,15 @@ function SingleWorkout() {
         console.log(e);
       });
   };
-  // const handleDeleteExercise = () => {
-  //   myApi
-  //     .delete(`${API_URL}/api/exercices/${exerciceId}`)
-  //     .then(() => navigate(`/workouts`))
-  //     .catch((error) => console.log(error));
-  // };
+
   if (!Object.keys(workout).length)
     return <div className="loading">Loading</div>;
 
   return (
     <div>
       <NavBar />
-      <p>Single workout page</p>
+      <h1>Workout name: {workout.workout.workoutName}</h1>
+      {/* <pre>{JSON.stringify(workout, null, 2)}</pre> */}
       {/* <ExerciseCreateForm /> */}
       <div>
         <button type="submit" onClick={handleDelete}>

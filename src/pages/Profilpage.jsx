@@ -8,6 +8,13 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 function Userpage() {
   const [profil, setProfil] = useState([]);
+  const [showResults, setShowResults] = useState(false);
+
+  function toggle(e) {
+    if (e.target.value === "Create profil") {
+      setShowResults((showResults) => !showResults);
+    }
+  }
 
   const getProfil = () => {
     myApi
@@ -26,8 +33,13 @@ function Userpage() {
   return (
     <div>
       <NavBar />
-      <ProfilCreateForm />
 
+      <div>
+        <button type="submit" value="Create profil" onClick={toggle}>
+          Create Profil 🖊️
+        </button>
+        {showResults && <ProfilCreateForm />}
+      </div>
       <div>
         {profil.map((profil) => {
           return (
