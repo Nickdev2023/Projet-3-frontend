@@ -20,10 +20,10 @@ function ProfilDetailpage() {
   }
   useEffect(() => {
     if (profil.bodyGoal === "Loose fat") {
-      const calculatedCalories = profil.dailyCalories - 200;
+      const calculatedCalories = profil.dailyCalories - 250;
       setCalories(calculatedCalories);
     } else {
-      const calculatedCalories = profil.dailyCalories + 200;
+      const calculatedCalories = profil.dailyCalories + 250;
       setCalories(calculatedCalories);
     }
   });
@@ -53,8 +53,13 @@ function ProfilDetailpage() {
       <NavBar />
 
       <div>
-        <button type="submit" value="Edit profil" onClick={toggle}>
-          Edit Profil 🖊️
+        <button
+          className="button"
+          type="submit"
+          value="Edit profil"
+          onClick={toggle}
+        >
+          Edit Profil
         </button>
         {showResults && <ProfilEditpage />}
       </div>

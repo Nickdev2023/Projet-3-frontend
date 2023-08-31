@@ -2,7 +2,8 @@ import { useState, useContext } from "react";
 import { UserContext } from "../context/AuthContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import BackgroundImage from "../images/fitguy.webp";
+import Logo from "../images/FitnessDiary.png";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function LoginPage() {
@@ -36,37 +37,46 @@ function LoginPage() {
       });
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="name">Username: </label>
-        <input
-          type="text"
-          value={name}
-          id="name"
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="email">Email:</label>
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          id="email"
-        />
-      </div>
-      <div>
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          id="password"
-        />
-      </div>
-      {error && <p className="error">{error}</p>}
-      <button>Login</button>
-    </form>
+    <div className="signupPage">
+      <img src={Logo} alt="" className="logoNavBar" />
+      <img className="backgroundSignup" src={BackgroundImage} alt="" />
+      <form onSubmit={handleSubmit}>
+        <div className="formSignIn">
+          <div>
+            <label htmlFor="name">Username: </label>
+            <input
+              className="input"
+              type="text"
+              value={name}
+              id="name"
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="email">Email:</label>
+            <input
+              className="input"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              id="email"
+            />
+          </div>
+          <div>
+            <label htmlFor="password">Password:</label>
+            <input
+              className="input"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              id="password"
+            />
+          </div>
+          {error && <p className="error">{error}</p>}
+          <button className="buttonLogout">Login</button>
+        </div>
+      </form>
+    </div>
   );
 }
 

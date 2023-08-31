@@ -68,21 +68,31 @@ function SingleWorkout() {
       {/* <pre>{JSON.stringify(workout, null, 2)}</pre> */}
       {/* <ExerciseCreateForm /> */}
       <div>
-        <button type="submit" onClick={handleDelete}>
+        <button className="button" type="submit" onClick={handleDelete}>
           Delete the workout
         </button>
       </div>
       <div>
-        <button type="submit" value="Create Exercice" onClick={toggle}>
-          Create Exercise 🖊️
+        <button
+          className="button"
+          type="submit"
+          value="Create Exercice"
+          onClick={toggle}
+        >
+          Create Exercise
         </button>
         {showResults && (
           <ExerciseCreateForm getAllExercises={getAllExercises} />
         )}
       </div>
       <div>
-        <button type="submit" value="Edit Exercice" onClick={toggle}>
-          Edit Workout 🖊️
+        <button
+          className="button"
+          type="submit"
+          value="Edit Exercice"
+          onClick={toggle}
+        >
+          Edit Workout
         </button>
         {showEdit && <WorkoutEditForm getAllExercises={getAllExercises} />}
       </div>
@@ -100,7 +110,10 @@ function SingleWorkout() {
             <p>🟢 🟠 🔴</p>
             <div>
               <p>You have done this exercise {exercise.counter} times</p>
-              <button onClick={() => increaseWorkout(exercise)}>
+              <button
+                className="button"
+                onClick={() => increaseWorkout(exercise)}
+              >
                 Exercise Done !
               </button>
             </div>

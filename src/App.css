@@ -1,8 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+
+* {
+  color: white;
+  background-color: black;
+  font-family: "Lato", sans-serif;
+}
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  padding: 0;
 }
 
 .logo {
@@ -40,3 +48,59 @@
 .read-the-docs {
   color: #888;
 }
+
+.titleHome {
+  font-size: 5rem;
+  background: -webkit-linear-gradient(
+    180deg,
+    #334274 10%,
+    #772c4d 31%,
+    #bb1626 41%,
+    #ff0000 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  max-width: max-content;
+}
+
+.logoNavBar {
+  width: 70vw;
+}
+.button {
+  color: #ffffff;
+  background-color: #242424;
+}
+.linkNavBar {
+  color: #bb1626;
+  font-size: 1rem;
+  margin: 1rem;
+}
+.linkNavBar:hover {
+  color: white;
+  font-size: 1.1rem;
+}
+.buttonLogout {
+  background-color: transparent;
+}
+.buttonLogout:hover {
+  background-color: transparent;
+  border-color: transparent;
+  color: #bb1626;
+  font-size: 1.1rem;
+}
+
+.backgroundSignup {
+  width: 100vw;
+  padding: 0;
+  z-index: -1;
+}
+.input {
+  border-color: transparent;
+}
+.input:hover {
+  border-bottom: 1px solid white;
+}
+/* .formSignIn {
+  display: flex;
+  flex-direction: row;
+} */

@@ -59,7 +59,7 @@ function SignupPage() {
           />
         </div>
         <p className="error">{error}</p>
-        <button>Signup</button>
+        <button className="button">Signup</button>
       </form>
     </div>
   );

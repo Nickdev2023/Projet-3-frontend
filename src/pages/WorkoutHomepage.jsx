@@ -37,8 +37,13 @@ function Workoutpage() {
     <div>
       <NavBar />
       <div>
-        <button type="submit" value="Create Workout" onClick={toggle}>
-          Create Workout 🖊️
+        <button
+          className="button"
+          type="submit"
+          value="Create Workout"
+          onClick={toggle}
+        >
+          Create Workout
         </button>
         {showResults && <WorkoutCreateForm getAllWorkouts={getAllWorkouts} />}
       </div>

@@ -35,8 +35,13 @@ function Userpage() {
       <NavBar />
 
       <div>
-        <button type="submit" value="Create profil" onClick={toggle}>
-          Create Profil 🖊️
+        <button
+          className="button"
+          type="submit"
+          value="Create profil"
+          onClick={toggle}
+        >
+          Create Profil
         </button>
         {showResults && <ProfilCreateForm />}
       </div>

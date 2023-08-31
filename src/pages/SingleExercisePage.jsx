@@ -10,8 +10,15 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 function Exercisepage() {
   const navigate = useNavigate();
+  const [showResults, setShowResults] = useState(false);
   const [exercise, setExercise] = useState({});
   let params = useParams();
+
+  function toggle(e) {
+    if (e.target.value === "Edit exercise") {
+      setShowResults((showResults) => !showResults);
+    }
+  }
 
   const getExercise = () => {
     let exerciceId = params.exerciceId;
@@ -39,7 +46,18 @@ function Exercisepage() {
   return (
     <div>
       <NavBar />
-      <ExerciseEditForm />
+      <div>
+        <button
+          className="button"
+          type="submit"
+          value="Edit exercise"
+          onClick={toggle}
+        >
+          Edit Exercise
+        </button>
+        {showResults && <ExerciseEditForm />}
+      </div>
+
       <p>Exercise Page</p>
       <div>
         <h1>{exercise.exerciceName}</h1>
@@ -48,7 +66,11 @@ function Exercisepage() {
         <p>Repetition:{exercise.repetition}</p>
         <p>weight:{exercise.weight}</p>
         <div>
-          <button type="submit" onClick={handleDeleteExercise}>
+          <button
+            className="button"
+            type="submit"
+            onClick={handleDeleteExercise}
+          >
             Delete the exercice
           </button>
         </div>

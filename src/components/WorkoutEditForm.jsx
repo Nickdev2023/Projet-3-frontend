@@ -129,7 +129,7 @@ function WorkoutEditForm() {
         </div>
 
         <div>
-          <button type="submit" disabled={submitting}>
+          <button className="button" type="submit" disabled={submitting}>
             Save
           </button>
           {/* {!showResults ? <ExerciseCreateForm /> : null} */}

@@ -8,7 +8,7 @@ function HomePage() {
       <div>
         <NavBar />
       </div>
-      <p>Home Page</p>
+      <p className="titleHome">Home Page</p>
     </div>
   );
 }
