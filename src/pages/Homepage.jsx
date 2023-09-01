@@ -6,7 +6,9 @@ function HomePage() {
   return (
     <div>
       <div>
-        <NavBar />
+        <div className="navBar">
+          <NavBar />
+        </div>
       </div>
       <p className="titleHome">Home Page</p>
     </div>

@@ -106,7 +106,7 @@ function ExerciseCreateForm({ getAllExercises }) {
             disabled={submitting}
           >
             <option disabled value="-1">
-              Please select something
+              Select the type of exercise
             </option>
             <option value="Polyarticular">Polyarticular</option>
             <option value="Monoarticular">Monoarticular</option>
@@ -122,7 +122,7 @@ function ExerciseCreateForm({ getAllExercises }) {
             disabled={submitting}
           >
             <option disabled value="-1">
-              Please select something
+              Select the muscle type
             </option>
             <option value="Chest">Chest</option>
             <option value="Shoulders">Shoulders</option>

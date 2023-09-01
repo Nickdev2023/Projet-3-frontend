@@ -32,7 +32,9 @@ function Userpage() {
 
   return (
     <div>
-      <NavBar />
+      <div className="navBar">
+        <NavBar />
+      </div>
 
       <div>
         <button

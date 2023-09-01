@@ -45,7 +45,9 @@ function Exercisepage() {
 
   return (
     <div>
-      <NavBar />
+      <div className="navBar">
+        <NavBar />
+      </div>
       <div>
         <button
           className="button"

@@ -4,7 +4,8 @@ import NavBar from "../components/Navbar";
 import myApi from "../api/service";
 import WorkoutCreateForm from "../components/WorkoutCreateForm";
 import WorkoutEditForm from "../components/WorkoutEditForm";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStopwatch } from "@fortawesome/free-solid-svg-icons";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function Workoutpage() {
@@ -35,7 +36,11 @@ function Workoutpage() {
 
   return (
     <div>
-      <NavBar />
+      <div className="navBar">
+        <NavBar />
+      </div>
+
+      <h1 className="workoutTitle">Workouts </h1>
       <div>
         <button
           className="button"
@@ -43,26 +48,24 @@ function Workoutpage() {
           value="Create Workout"
           onClick={toggle}
         >
-          Create Workout
+          Create a Workout
         </button>
         {showResults && <WorkoutCreateForm getAllWorkouts={getAllWorkouts} />}
       </div>
-      {/* <div>
-        <button type="submit" value="Edit Workout" onClick={toggle}>
-          Edit Workout 🖊️
-        </button>
-        {showEdit && <WorkoutEditForm />}
-      </div> */}
-
-      <p>Workouts Page</p>
       {workout.map((workout) => {
         return (
-          <div key={workout._id}>
+          <div className="workoutBox" key={workout._id}>
+            <h2 className="workoutBackground head">
+              Category: {workout.category}
+            </h2>
             <Link to={`/workouts/${workout._id}`}>
-              <h1>{workout.workoutName}</h1>
+              <h1 className="workoutBackground titleWorkout">
+                {workout.workoutName}
+              </h1>
             </Link>
-            <h2>Category: {workout.category}</h2>
-            <p>Duration: {workout.duration} minutes</p>
+            <p className="workoutBackground feet">
+              <FontAwesomeIcon icon={faStopwatch} /> {workout.duration} minutes
+            </p>
           </div>
         );
       })}

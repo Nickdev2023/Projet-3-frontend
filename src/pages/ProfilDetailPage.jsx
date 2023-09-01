@@ -50,7 +50,9 @@ function ProfilDetailpage() {
 
   return (
     <div>
-      <NavBar />
+      <div className="navBar">
+        <NavBar />
+      </div>
 
       <div>
         <button

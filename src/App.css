@@ -2,11 +2,20 @@
 
 * {
   color: white;
-  background-color: black;
+
   font-family: "Lato", sans-serif;
 }
+body {
+  /* background-color: black; */
+
+  background: linear-gradient(
+    328deg,
+    rgba(187, 22, 38, 1) 0%,
+    rgba(0, 0, 0, 1) 16%
+  );
+}
 #root {
-  max-width: 1280px;
+  width: 85vw;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -40,7 +49,15 @@
     animation: logo-spin infinite 20s linear;
   }
 }
-
+input {
+  background-color: black;
+  /* border: 1px transparent; */
+}
+select {
+  color: #ffffff;
+  background-color: black;
+  border: 1px transparent;
+}
 .card {
   padding: 2em;
 }
@@ -62,13 +79,17 @@
   -webkit-text-fill-color: transparent;
   max-width: max-content;
 }
-
+/* Navbar and buttons */
 .logoNavBar {
   width: 70vw;
 }
 .button {
   color: #ffffff;
   background-color: #242424;
+  /* box-shadow: 1px 1px 1px #d1d1d1;
+  border: 1px solid #334274; */
+}
+.button:hover {
 }
 .linkNavBar {
   color: #bb1626;
@@ -88,6 +109,7 @@
   color: #bb1626;
 }
 
+/* Login page*/
 .backgroundSignup {
   width: 100vw;
   padding: 0;
@@ -102,4 +124,46 @@
 }
 .input:hover {
   border-bottom: 1px solid white;
+}
+
+/* Workout page  */
+.workoutTitle {
+  color: #bb1626;
+}
+.workoutBox {
+  border-radius: 1rem;
+  border: 1px solid #334274;
+  background-color: #1a1a1a;
+  /* box-shadow: 3px 3px 3px #868686; */
+  margin: 1rem 0 1rem 0;
+}
+.workoutBackground {
+  /* background-color: #242424; */
+}
+.head {
+  border-radius: 1rem 1rem 0 0;
+}
+.feet {
+  border-radius: 0 0 1rem 1rem;
+}
+.titleWorkout:hover {
+  color: #bb1626;
+}
+
+/*Single workout page*/
+.editAndCreateWorkout {
+  display: flex;
+  justify-content: center;
+}
+.workoutButton {
+  margin: 0 0.5rem 0.5rem 0;
+}
+.deleteWorkout {
+  color: #bb1626;
+}
+
+.navBar {
+  top: 0;
+  position: sticky;
+  background-color: black;
 }

@@ -6,6 +6,9 @@ import ExerciseCreateForm from "../components/ExerciseCreateForm";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import WorkoutEditForm from "../components/WorkoutEditForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 function SingleWorkout() {
@@ -63,14 +66,33 @@ function SingleWorkout() {
 
   return (
     <div>
-      <NavBar />
-      <h1>Workout name: {workout.workout.workoutName}</h1>
+      <div className="navBar">
+        <NavBar />
+      </div>
+      <h1>Workout: {workout.workout.workoutName}</h1>
       {/* <pre>{JSON.stringify(workout, null, 2)}</pre> */}
       {/* <ExerciseCreateForm /> */}
-      <div>
-        <button className="button" type="submit" onClick={handleDelete}>
-          Delete the workout
-        </button>
+      <div className="editAndCreateWorkout">
+        <div>
+          <button
+            className="button workoutButton"
+            type="submit"
+            value="Edit Exercice"
+            onClick={toggle}
+          >
+            Edit Workout
+          </button>
+          {showEdit && <WorkoutEditForm getAllExercises={getAllExercises} />}
+        </div>
+        <div>
+          <button
+            className="button workoutButton deleteWorkout"
+            type="submit"
+            onClick={handleDelete}
+          >
+            Delete Workout
+          </button>
+        </div>
       </div>
       <div>
         <button
@@ -79,22 +101,11 @@ function SingleWorkout() {
           value="Create Exercice"
           onClick={toggle}
         >
-          Create Exercise
+          Create an Exercise
         </button>
         {showResults && (
           <ExerciseCreateForm getAllExercises={getAllExercises} />
         )}
-      </div>
-      <div>
-        <button
-          className="button"
-          type="submit"
-          value="Edit Exercice"
-          onClick={toggle}
-        >
-          Edit Workout
-        </button>
-        {showEdit && <WorkoutEditForm getAllExercises={getAllExercises} />}
       </div>
 
       {workout.exos.map((exercise) => {
@@ -105,9 +116,13 @@ function SingleWorkout() {
               <h1>{exercise.exerciceName}</h1>
             </Link>
 
-            <h2>Sets: {exercise.sets}</h2>
-            <p>Weight: {exercise.weight} kg</p>
-            <p>🟢 🟠 🔴</p>
+            <h2>
+              <FontAwesomeIcon icon={faDumbbell} /> {exercise.weight} kg
+            </h2>
+            <p>Sets: {exercise.sets}</p>
+
+            <p>Repetition: {exercise.repetition} times</p>
+
             <div>
               <p>You have done this exercise {exercise.counter} times</p>
               <button
