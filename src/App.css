@@ -67,7 +67,7 @@ select {
 }
 
 .titleHome {
-  font-size: 5rem;
+  font-size: 3rem;
   background: -webkit-linear-gradient(
     180deg,
     #334274 10%,
@@ -166,4 +166,13 @@ select {
   top: 0;
   position: sticky;
   background-color: black;
+}
+.homePicture {
+  width: 100vw;
+}
+/*Profil page*/
+.bottomProfil {
+  background-color: #242424;
+  border-radius: 1rem;
+  padding: 1rem;
 }

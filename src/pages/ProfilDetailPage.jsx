@@ -79,6 +79,8 @@ function ProfilDetailpage() {
         <p>Number of training per week: {profil.numberOfTraining} times</p>
         <p>Body goal: {profil.bodyGoal}</p>
         {/* <button onClick={calculateCalories}>Calculate Calories</button> */}
+      </div>
+      <div className="bottomProfil">
         <p>Based on your goals you should consume: {calories} calories</p>
         <p>Your BMI is: {bmi}</p>
       </div>
