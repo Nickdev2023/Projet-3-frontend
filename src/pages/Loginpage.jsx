@@ -4,6 +4,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import BackgroundImage from "../images/fitguy.webp";
 import Logo from "../images/FitnessDiary.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function LoginPage() {
@@ -43,8 +45,11 @@ function LoginPage() {
       <form onSubmit={handleSubmit}>
         <div className="formSignIn">
           <div>
-            <label htmlFor="name">Username: </label>
+            <label htmlFor="name">
+              <FontAwesomeIcon icon={faUser} />{" "}
+            </label>
             <input
+              placeholder="Username"
               className="input"
               type="text"
               value={name}
@@ -53,8 +58,11 @@ function LoginPage() {
             />
           </div>
           <div>
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email">
+              <FontAwesomeIcon icon={faEnvelope} />
+            </label>
             <input
+              placeholder="Your email"
               className="input"
               type="text"
               value={email}
@@ -63,8 +71,11 @@ function LoginPage() {
             />
           </div>
           <div>
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">
+              <FontAwesomeIcon icon={faLock} />
+            </label>
             <input
+              placeholder="Your password"
               className="input"
               type="password"
               value={password}
